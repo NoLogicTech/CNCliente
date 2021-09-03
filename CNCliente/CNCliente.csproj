@@ -13,4 +13,28 @@
         <PackageReference Include="Syncfusion.Blazor.Inputs" Version="19.2.0.59" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="wwwroot\css\bootstrap\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="wwwroot\css\bootstrap\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="wwwroot\css\bootstrap\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="wwwroot\css\bootstrap\**" />
+      <Content Remove="Shared\NavMenu.razor" />
+      <Content Remove="Shared\SurveyPrompt.razor" />
+      <Content Remove="Shared\NavMenu.razor.css.razor" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap\bootstrap.min.css" />
+      <_ContentIncludedByDefault Remove="wwwroot\css\bootstrap\bootstrap.min.css.map" />
+    </ItemGroup>
+
 </Project>
