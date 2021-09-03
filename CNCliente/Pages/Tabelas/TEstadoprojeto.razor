@@ -1,4 +1,4 @@
-﻿@using Syncfusion.Blazor
+﻿ @using Syncfusion.Blazor
 @using Syncfusion.Blazor.Grids
 @using Syncfusion.Blazor.Data
 @using Syncfusion.Blazor.Navigations
@@ -6,7 +6,7 @@
 @using Blazor.Models
 @inject HttpClient httpclient
 
-@page "/tcodpostal"
+@page "/testadoprojeto"
 
 @{
 
@@ -17,14 +17,14 @@
     <div class="flex p-4 font-bold text-2xl text-gray-800 border-b-2 mx-3 border-blue-600 border-opacity-90 h-14 ">
         <p>TABELAS</p>
         <p class="px-3"> | </p>
-        <p>CODIGOS POSTAIS</p>
+        <p>ESTADOS</p>
     </div>
     <div class="flex bg-white m-3 rounded-sm shadow-lg">
         <div class="flex">
 
-            <SfGrid @ref="DefaultGrid" ID="Grid" TValue="Codpostal" Toolbar=@ToolbarItems AllowSorting="true" AllowPaging="true"
+            <SfGrid @ref="DefaultGrid" ID="Grid" TValue="Estadoprojeto" Toolbar=@ToolbarItems AllowSorting="true" AllowPaging="true"
                     AllowExcelExport="true" AllowPdfExport="true" ContextMenuItems=@ContextMenuItems>
-                <SfDataManager Url="api/Codpostal" CrossDomain="true" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
+                <SfDataManager Url="api/Estadoprojeto" CrossDomain="true" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
 
                 <GridEditSettings AllowEditing="true" Mode="EditMode.Normal">
                 </GridEditSettings>
@@ -40,17 +40,16 @@
                     </ToolbarItems>
                 </SfToolbar>
                 <GridPageSettings PageSizes="true"></GridPageSettings>
-                <GridEvents OnActionFailure="ActionFailureHandler" OnToolbarClick="ToolbarClickHandler" TValue="Cae">
+                <GridEvents OnActionFailure="ActionFailureHandler" OnToolbarClick="ToolbarClickHandler" TValue="Estadoprojeto">
                 </GridEvents>
 
                 <GridColumns>
-                    <GridColumn Field=@nameof(Codpostal.CodpostalId) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" Width="10"
+                    <GridColumn Field=@nameof(Estadoprojeto.EstadoprojetoId) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" Width="10"
                                 AllowSearching="false">
                     </GridColumn>
-                    <GridColumn Field="Distrito.DistritoNome" HeaderText="Distrito" AllowSearching="true" Width="20">
+                    <GridColumn Field=@nameof(Estadoprojeto.EstadoprojetoNome) HeaderText="Estado" Width="25">
                     </GridColumn>
-                    <GridColumn Field="Concelho.ConcelhoNome" HeaderText="Concelho" AllowSearching="true" Width="20">
-                    </GridColumn>
+                    
                 </GridColumns>
             </SfGrid>
         </div>
@@ -66,7 +65,7 @@
 </style>
 
 @code {
-    private SfGrid<Codpostal> DefaultGrid;
+    private SfGrid<Estadoprojeto> DefaultGrid;
 
     public void OnInput(InputEventArgs args)
     {
