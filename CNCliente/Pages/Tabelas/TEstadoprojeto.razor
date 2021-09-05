@@ -26,7 +26,7 @@
                     AllowExcelExport="true" AllowPdfExport="true" ContextMenuItems=@ContextMenuItems>
                 <SfDataManager Url="api/Estadoprojeto" CrossDomain="true" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
 
-                <GridEditSettings AllowEditing="true" Mode="EditMode.Normal">
+                <GridEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode="EditMode.Normal">
                 </GridEditSettings>
                 <GridSelectionSettings Type="SelectionType.Multiple"></GridSelectionSettings>
                 <SfToolbar>
@@ -74,7 +74,9 @@
 
     private List<object> ToolbarItems = new List<object>()
     {
+        new ItemModel() {Text = "Novo", PrefixIcon = "e-add", Id = "Grid_add"},
         new ItemModel() {Text = "Editar", PrefixIcon = "e-edit", Id = "Grid_edit"},
+        new ItemModel() {Text = "Apagar", PrefixIcon = "e-delete", Id = "Grid_delete"},
         new ItemModel() {Text = "Guardar", PrefixIcon = "e-update", Id = "Grid_update"},
         new ItemModel() {Text = "Cancelar", PrefixIcon = "e-cancel", Id = "Grid_cancel"},
         new ItemModel() {Text = "Excel", PrefixIcon = "e-excelexport", Id = "Grid_excelexport"},

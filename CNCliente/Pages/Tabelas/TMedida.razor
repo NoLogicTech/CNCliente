@@ -6,7 +6,7 @@
 @using Blazor.Models
 @inject HttpClient httpclient
 
-@page "/tprojeto"
+@page "/tmedida"
 
 @{
 
@@ -17,16 +17,16 @@
     <div class="flex p-4 font-bold text-2xl text-gray-800 border-b-2 mx-3 border-blue-600 border-opacity-90 h-14 ">
         <p>TABELAS</p>
         <p class="px-3"> | </p>
-        <p>PROJETOS</p>
+        <p>MEDIDAS</p>
     </div>
     <div class="flex bg-white m-3 rounded-sm shadow-lg">
         <div class="flex">
 
-            <SfGrid @ref="DefaultGrid" ID="Grid" TValue="Projeto" Toolbar=@ToolbarItems AllowSorting="true" AllowPaging="true"
+            <SfGrid @ref="DefaultGrid" ID="Grid" TValue="Medida" Toolbar=@ToolbarItems AllowSorting="true" AllowPaging="true"
                     AllowExcelExport="true" AllowPdfExport="true" ContextMenuItems=@ContextMenuItems>
-                <SfDataManager Url="api/Projeto" CrossDomain="true" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
+                <SfDataManager Url="api/Medida" CrossDomain="true" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
 
-                <GridEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode="EditMode.Normal">
+                 <GridEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode="EditMode.Normal">
                 </GridEditSettings>
                 <GridSelectionSettings Type="SelectionType.Multiple"></GridSelectionSettings>
                 <SfToolbar>
@@ -40,23 +40,15 @@
                     </ToolbarItems>
                 </SfToolbar>
                 <GridPageSettings PageSizes="true"></GridPageSettings>
-                <GridEvents OnActionFailure="ActionFailureHandler" OnToolbarClick="ToolbarClickHandler" TValue="Projeto">
+                <GridEvents OnActionFailure="ActionFailureHandler" OnToolbarClick="ToolbarClickHandler" TValue="Medida">
                 </GridEvents>
 
                 <GridColumns>
-                    <GridColumn Field=@nameof(Projeto.ProjetoId) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" Width="10"
-                                AllowSearching="false" Visible="false">
+                    <GridColumn Field=@nameof(Medida.MedidaId) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" Width="10"
+                                AllowSearching="false">
                     </GridColumn>
-                    <GridColumn Field=@nameof(Projeto.ProjetoNumero) HeaderText="N.º" Width="10">
+                    <GridColumn Field=@nameof(Medida.MedidaNome) HeaderText="Designação" Width="90">
                     </GridColumn>
-                    <GridColumn Field="Cliente.ClienteNome" HeaderText="Cliente" Width="35"></GridColumn>
-                    <GridColumn Field="Medida.MedidaNome" HeaderText="Medida" Width="20"></GridColumn>
-                    <GridColumn Field="Estadoprojeto.EstadoprojetoNome" HeaderText="Estado" Width="25"></GridColumn>
-                    <GridColumn Field=@nameof(Projeto.ProjetoDatasubmissao) HeaderText="Submissão" Format="d" Type=ColumnType.Date  Width="10"></GridColumn>
-                    <GridColumn Field=@nameof(Projeto.ProjetoDatainicio) HeaderText="Início" Format="d" Type=ColumnType.Date Width="10"></GridColumn>
-                    <GridColumn Field=@nameof(Projeto.ProjetoDatafim) HeaderText="Fim" Format="d" Type=ColumnType.Date Width="10"></GridColumn>
-                    <GridColumn Field=@nameof(Projeto.ProjetoValoraprovado) HeaderText="Investimento" Format="N2" Width="15"></GridColumn>
-                    <GridColumn Field=@nameof(Projeto.ProjetoIncentivoaprovado) HeaderText="Incentivo" Format="N2" Width="15"></GridColumn>
                 </GridColumns>
 
             </SfGrid>
@@ -73,7 +65,7 @@
 </style>
 
 @code {
-    private SfGrid<Projeto> DefaultGrid;
+    private SfGrid<Medida> DefaultGrid;
 
     public void OnInput(InputEventArgs args)
     {

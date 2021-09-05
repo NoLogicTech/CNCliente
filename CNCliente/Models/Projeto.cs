@@ -25,7 +25,7 @@ namespace Blazor.Models
         public int? EstadoId { get; set; }
 
         public virtual Cliente Cliente { get; set; }
-        public virtual Estadoprojeto Estado { get; set; }
+        public virtual Estadoprojeto Estadoprojeto { get; set; }
         public virtual Medida Medida { get; set; }
     }
 }
