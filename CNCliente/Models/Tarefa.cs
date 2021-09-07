@@ -7,16 +7,16 @@ namespace Blazor.Models
 {
     public partial class Tarefa
     {
-        public int TarefaId { get; set; }
-        public int? TarefaParentid { get; set; }
-        public int ProjetoId { get; set; }
-        public string TarefaNome { get; set; }
-        public DateTime TarefaDatahoraregisto { get; set; }
-        public DateTime TarefaDatalimite { get; set; }
-        public int TarefaPosicao { get; set; }
-        public int UtilizadorIdcriador { get; set; }
-        public int UtilizadorIdatribuido { get; set; }
-        public bool TarefaEstado { get; set; }
-        public bool TarefaTemfilho { get; set; }
+        public int tarefaId { get; set; }
+        public int? tarefaParentid { get; set; }
+        public int projetoId { get; set; }
+        public string tarefaNome { get; set; }
+        public DateTime tarefaDatahoraregisto { get; set; }
+        public DateTime tarefaDatalimite { get; set; }
+        public int tarefaPosicao { get; set; }
+        public int utilizadorIdcriador { get; set; }
+        public int utilizadorIdatribuido { get; set; }
+        public bool tarefaEstado { get; set; }
+        public bool tarefaTemfilho { get; set; }
     }
 }
