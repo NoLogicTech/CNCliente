@@ -7,6 +7,11 @@ namespace Blazor.Models
 {
     public partial class Projeto
     {
+        public Projeto()
+        {
+            Tarefas = new HashSet<Tarefa>();
+        }
+
         public int ProjetoId { get; set; }
         public string ProjetoNumero { get; set; }
         public string ProjetoDesignacao { get; set; }
@@ -27,5 +32,6 @@ namespace Blazor.Models
         public virtual Cliente Cliente { get; set; }
         public virtual Estadoprojeto Estadoprojeto { get; set; }
         public virtual Medida Medida { get; set; }
+        public virtual ICollection<Tarefa> Tarefas { get; set; }
     }
 }

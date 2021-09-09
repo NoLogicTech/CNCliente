@@ -11,6 +11,7 @@ namespace Blazor.Models
         {
             Clientes = new HashSet<Cliente>();
             Codpostals = new HashSet<Codpostal>();
+            Concelhos = new HashSet<Concelho>();
         }
 
         public int DistritoId { get; set; }
@@ -18,5 +19,6 @@ namespace Blazor.Models
 
         public virtual ICollection<Cliente> Clientes { get; set; }
         public virtual ICollection<Codpostal> Codpostals { get; set; }
+        public virtual ICollection<Concelho> Concelhos { get; set; }
     }
 }

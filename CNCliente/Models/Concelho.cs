@@ -20,6 +20,7 @@ namespace Blazor.Models
         public int DistritoId { get; set; }
         public int? RegiaoId { get; set; }
 
+        public virtual Distrito Distrito { get; set; }
         public virtual ICollection<Cliente> Clientes { get; set; }
         public virtual ICollection<Codpostal> Codpostals { get; set; }
     }
