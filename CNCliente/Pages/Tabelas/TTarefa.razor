@@ -4,6 +4,7 @@
 @using Syncfusion.Blazor.TreeGrid
 @using Syncfusion.Blazor.Navigations
 @using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.DropDowns
 @using Blazor.Models
 @inject HttpClient httpclient
 
@@ -25,7 +26,7 @@
             <SfTreeGrid TValue="Tarefa" IdMapping="tarefaId" AllowPaging="true" AllowSorting="true"
                         ParentIdMapping="tarefaParentid" HasChildMapping="tarefaTemfilho" AutoCheckHierarchy="true"
                         TreeColumnIndex="1" Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" })">
-                <SfDataManager Url="http://localhost:45000/api/Tarefa" Adaptor="Adaptors.WebApiAdaptor" CrossDomain="true"></SfDataManager>
+                <SfDataManager Url="api/Tarefa" Adaptor="Adaptors.WebApiAdaptor" CrossDomain="true"></SfDataManager>
                 <TreeGridEditSettings AllowEditing="true"
                                       AllowAdding="true"
                                       AllowDeleting="true"
@@ -34,13 +35,12 @@
                 <TreeGridColumns>
                     <TreeGridColumn Field="tarefaId" Visible="false" HeaderText="ID" Width="80" IsPrimaryKey="true" IsIdentity="true"></TreeGridColumn>
                     <TreeGridColumn Field="tarefaNome" HeaderText="Designação" Width="120" Type=ColumnType.String></TreeGridColumn>
-                    <TreeGridColumn Field="projetoId" Visible="false" DefaultValue=@Projeto HeaderText="Projeto" Width="80"></TreeGridColumn>
+                    <TreeGridColumn Field="Projeto.ProjetoNumero" DefaultValue=@Projeto HeaderText="Projeto" Width="80"></TreeGridColumn>
                     <TreeGridColumn Field="tarefaParentid" Visible="false" Width="80"></TreeGridColumn>
                     <TreeGridColumn Field="tarefaDatahoraregisto" DefaultValue=@DateTime.Now Visible="false" Width="160" Type="Syncfusion.Blazor.Grids.ColumnType.DateTime" EditType="Syncfusion.Blazor.Grids.EditType.DateTimePickerEdit"></TreeGridColumn>
                     <TreeGridColumn Field="tarefaDatalimite" DefaultValue=@DateTime.Now HeaderText="Data Limite" TextAlign="TextAlign.Center" Format="d" Width="60" Type="Syncfusion.Blazor.Grids.ColumnType.DateTime" EditType="Syncfusion.Blazor.Grids.EditType.DateTimePickerEdit"></TreeGridColumn>
                     <TreeGridColumn Field="tarefaPosicao" Visible="false" HeaderText="" Width="80"></TreeGridColumn>
-                    <TreeGridColumn Field="utilizadorIdcriador" DefaultValue=@UtilizadorCriador Visible="false" HeaderText="" Width="60"></TreeGridColumn>
-                    <TreeGridColumn Field="utilizadorIdatribuido" DefaultValue=@UtilizadorAtribuido HeaderText="Responsável" TextAlign="TextAlign.Center" Width="30"></TreeGridColumn>
+                    <TreeGridColumn Field="Utilizador.UtilizadorId" HeaderText="Responsável" Width="80"></TreeGridColumn>
                     <TreeGridColumn Field="tarefaEstado" Visible="false" DefaultValue="false" HeaderText="Estado" TextAlign="TextAlign.Right" Width="60"></TreeGridColumn>
                     <TreeGridColumn Field="tarefaTemfilho" Visible="false" HeaderText="" Width="80"></TreeGridColumn>
                     <TreeGridColumn HeaderText="Manage Records" Width="20">
@@ -53,6 +53,11 @@
         </div>
     </div>
 </div>
+
+<SfDropDownList ID="Utilizador" TItem="Utilizador" TValue="string">
+    <SfDataManager Url="api/Utilizador" Adaptor="Adaptors.WebApiAdaptor" CrossDomain="true"></SfDataManager>
+    <DropDownListFieldSettings Text="UtilizadorNome" Value="UtilizadorId"></DropDownListFieldSettings>
+</SfDropDownList>
 
 <style>
     .e-grid .e-headercell {
@@ -75,6 +80,8 @@
     public int UtilizadorAtribuido { get; set; } = 1;
 
     public SfTreeGrid<Tarefa> treeGrid { get; set; }
+
+
 
     private List<object> ToolbarItems = new List<object>()
     {
@@ -102,6 +109,41 @@
         error123 = myReturnedException.ToString();
     }
 
+    public List<TreeData> TreeGridData { get; set; }
 
+    public List<string> DropDownData { get; set; }
+
+    protected override void OnInitialized()
+    {
+        this.TreeGridData = TreeData.GetSelfDataSource().ToList();
+
+        this.DropDownData = TreeData.GetSelfDataSource().Select(s => s.Priority).Distinct().ToList();
+    }
+
+    public class TreeData
+    {
+        public int TaskId { get; set; }
+        public string TaskName { get; set; }
+        public int? Duration { get; set; }
+        public int? Progress { get; set; }
+        public string Priority { get; set; }
+        public int? ParentId { get; set; }
+
+        public static List<TreeData> GetSelfDataSource()
+        {
+            List<TreeData> TreeDataCollection = new List<TreeData>();
+            TreeDataCollection.Add(new TreeData() { TaskId = 1, TaskName = "Parent Task 1", Duration = 10, Progress = 70, Priority = "Critical", ParentId = null });
+            TreeDataCollection.Add(new TreeData() { TaskId = 2, TaskName = "Child task 1", Progress = 80, Duration = 50, Priority = "Low", ParentId = 1 });
+            TreeDataCollection.Add(new TreeData() { TaskId = 3, TaskName = "Child Task 2", Duration = 5, Progress = 65, Priority = "Critical", ParentId = 2 });
+            TreeDataCollection.Add(new TreeData() { TaskId = 4, TaskName = "Child task 3", Duration = 6, Priority = "High", Progress = 77, ParentId = 3 });
+            TreeDataCollection.Add(new TreeData() { TaskId = 5, TaskName = "Parent Task 2", Duration = 10, Progress = 70, Priority = "Critical", ParentId = null });
+            TreeDataCollection.Add(new TreeData() { TaskId = 6, TaskName = "Child task 1", Duration = 4, Progress = 80, Priority = "Critical", ParentId = 5 });
+            TreeDataCollection.Add(new TreeData() { TaskId = 7, TaskName = "Child Task 2", Duration = 5, Progress = 65, Priority = "Low", ParentId = 5 });
+            TreeDataCollection.Add(new TreeData() { TaskId = 8, TaskName = "Child task 3", Duration = 6, Progress = 77, Priority = "High", ParentId = 5 });
+            TreeDataCollection.Add(new TreeData() { TaskId = 9, TaskName = "Child task 4", Duration = 6, Progress = 77, Priority = "Low", ParentId = 5 });
+            return TreeDataCollection;
+        }
+    }
+}
 
 }

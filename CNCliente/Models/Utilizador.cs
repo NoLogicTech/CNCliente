@@ -9,8 +9,7 @@ namespace Blazor.Models
     {
         public Utilizador()
         {
-            TarefaUtilizadorIdatribuidoNavigations = new HashSet<Tarefa>();
-            TarefaUtilizadorIdcriadorNavigations = new HashSet<Tarefa>();
+            Tarefas = new HashSet<Tarefa>();
         }
 
         public int UtilizadorId { get; set; }
@@ -18,7 +17,6 @@ namespace Blazor.Models
         public string UtilizadorEmail { get; set; }
         public string UtilizadorIniciais { get; set; }
 
-        public virtual ICollection<Tarefa> TarefaUtilizadorIdatribuidoNavigations { get; set; }
-        public virtual ICollection<Tarefa> TarefaUtilizadorIdcriadorNavigations { get; set; }
+        public virtual ICollection<Tarefa> Tarefas { get; set; }
     }
 }

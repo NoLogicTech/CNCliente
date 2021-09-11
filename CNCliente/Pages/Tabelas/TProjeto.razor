@@ -44,19 +44,19 @@
                 </GridEvents>
 
                 <GridColumns>
-                    <GridColumn Field=@nameof(Projeto.ProjetoId) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" Width="10"
+                    <GridColumn Field=@nameof(Projeto.projetoId) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" Width="10"
                                 AllowSearching="false" Visible="false">
                     </GridColumn>
-                    <GridColumn Field=@nameof(Projeto.ProjetoNumero) HeaderText="N.º" Width="10">
+                    <GridColumn Field=@nameof(Projeto.projetoNumero) HeaderText="N.º" Width="10">
                     </GridColumn>
                     <GridColumn Field="Cliente.ClienteNome" HeaderText="Cliente" Width="35"></GridColumn>
                     <GridColumn Field="Medida.MedidaNome" HeaderText="Medida" Width="20"></GridColumn>
                     <GridColumn Field="Estadoprojeto.EstadoprojetoNome" HeaderText="Estado" Width="25"></GridColumn>
-                    <GridColumn Field=@nameof(Projeto.ProjetoDatasubmissao) HeaderText="Submissão" Format="d" Type=ColumnType.Date  Width="10"></GridColumn>
+                    <GridColumn Field=@nameof(Projeto.projetoDatasubmissao) HeaderText="Submissão" Format="d" Type=ColumnType.Date  Width="10"></GridColumn>
                     <GridColumn Field=@nameof(Projeto.ProjetoDatainicio) HeaderText="Início" Format="d" Type=ColumnType.Date Width="10"></GridColumn>
                     <GridColumn Field=@nameof(Projeto.ProjetoDatafim) HeaderText="Fim" Format="d" Type=ColumnType.Date Width="10"></GridColumn>
-                    <GridColumn Field=@nameof(Projeto.ProjetoValoraprovado) HeaderText="Investimento" Format="N2" Width="15"></GridColumn>
-                    <GridColumn Field=@nameof(Projeto.ProjetoIncentivoaprovado) HeaderText="Incentivo" Format="N2" Width="15"></GridColumn>
+                    <GridColumn Field=@nameof(Projeto.projetoValoraprovado) HeaderText="Investimento" Format="N2" Width="15"></GridColumn>
+                    <GridColumn Field=@nameof(Projeto.projetoIncentivoaprovado) HeaderText="Incentivo" Format="N2" Width="15"></GridColumn>
                 </GridColumns>
 
             </SfGrid>

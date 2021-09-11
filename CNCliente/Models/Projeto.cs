@@ -12,15 +12,15 @@ namespace Blazor.Models
             Tarefas = new HashSet<Tarefa>();
         }
 
-        public int ProjetoId { get; set; }
-        public string ProjetoNumero { get; set; }
-        public string ProjetoDesignacao { get; set; }
-        public decimal? ProjetoValoraprovado { get; set; }
-        public decimal? ProjetoIncentivoaprovado { get; set; }
-        public decimal? ProjetoValorrealizado { get; set; }
-        public decimal? ProjetoIncentivorecebido { get; set; }
-        public DateTime? ProjetoDatasubmissao { get; set; }
-        public DateTime? ProjetoDatadecisao { get; set; }
+        public int projetoId { get; set; }
+        public string projetoNumero { get; set; }
+        public string projetoDesignacao { get; set; }
+        public decimal? projetoValoraprovado { get; set; }
+        public decimal? projetoIncentivoaprovado { get; set; }
+        public decimal? projetoValorrealizado { get; set; }
+        public decimal? projetoIncentivorecebido { get; set; }
+        public DateTime? projetoDatasubmissao { get; set; }
+        public DateTime? projetoDatadecisao { get; set; }
         public DateTime? ProjetoDatacontratacao { get; set; }
         public DateTime? ProjetoDatainicio { get; set; }
         public DateTime? ProjetoDatafim { get; set; }
