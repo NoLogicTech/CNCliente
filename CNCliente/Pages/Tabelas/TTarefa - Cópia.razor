@@ -8,7 +8,7 @@
 @using CNCliente.Models
 @inject HttpClient httpclient
 
-@page "/ttarefa"
+@page "/ttarefacopia"
 
 @error123
 <div class="flex bg-gray-100 flex-grow flex-col">
@@ -21,7 +21,7 @@
         <div class="flex">
             <SfTreeGrid TValue="tarefa" IdMapping="tarefaId" AllowPaging="true" AllowSorting="true"
                         ParentIdMapping="tarefaParentid" HasChildMapping="tarefaTemfilho" 
-                        TreeColumnIndex="1" Toolbar="@ToolbarItems">
+                        TreeColumnIndex="1" Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" })">
                 <SfDataManager Url="api/Tarefa" Adaptor="Adaptors.WebApiAdaptor" CrossDomain="true"></SfDataManager>
                 <TreeGridEditSettings AllowEditing="true"
                                       AllowAdding="true"
@@ -40,7 +40,7 @@
                     <TreeGridColumn Field="@nameof(tarefa.tarefaTemfilho)" HeaderText="" Width="80"></TreeGridColumn>
                 </TreeGridColumns>
 
-               
+                <GridEvents OnActionFailure="ActionFailureHandler" TValue="tarefa"></GridEvents>
 
             </SfTreeGrid>
         </div>
@@ -63,6 +63,8 @@
 
 @code {
     // VALORES DE INICIALIZAÇÃO SIMULADOS
+    public int Projeto { get; set; } = 1;
+    public int UtilizadorAtribuido { get; set; } = 1;
 
     public SfTreeGrid<tarefa> treeGrid { get; set; }
 
@@ -91,6 +93,7 @@
         Exception myReturnedException = args.Error;
         error123 = myReturnedException.ToString();
     }
+
 
     protected override void OnInitialized()
     {
