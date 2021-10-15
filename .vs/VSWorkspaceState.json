@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\CNCliente"
+    "\\CNCliente",
+    "\\CNCliente\\Models",
+    "\\CNCliente\\Pages",
+    "\\CNCliente\\Pages\\Tabelas"
   ],
   "SelectedNode": "\\CNCliente.sln",
   "PreviewInSolutionExplorer": false

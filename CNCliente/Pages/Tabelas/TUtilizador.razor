@@ -3,7 +3,7 @@
 @using Syncfusion.Blazor.Data
 @using Syncfusion.Blazor.Navigations
 @using Syncfusion.Blazor.Inputs
-@using Blazor.Models
+@using CNCliente.Models
 @inject HttpClient httpclient
 
 @page "/tutilizador"
@@ -22,7 +22,7 @@
     <div class="flex bg-white m-3 rounded-sm shadow-lg">
         <div class="flex">
 
-            <SfGrid @ref="DefaultGrid" ID="Grid" TValue="Utilizador" Toolbar=@ToolbarItems AllowSorting="true" AllowPaging="true"
+            <SfGrid @ref="DefaultGrid" ID="Grid" TValue="utilizador" Toolbar=@ToolbarItems AllowSorting="true" AllowPaging="true"
                     AllowExcelExport="true" AllowPdfExport="true" ContextMenuItems=@ContextMenuItems>
                 <SfDataManager Url="api/Utilizador" CrossDomain="true" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
 
@@ -40,18 +40,18 @@
                     </ToolbarItems>
                 </SfToolbar>
                 <GridPageSettings PageSizes="true"></GridPageSettings>
-                <GridEvents OnActionFailure="ActionFailureHandler" OnToolbarClick="ToolbarClickHandler" TValue="Utilizador">
+                <GridEvents OnActionFailure="ActionFailureHandler" OnToolbarClick="ToolbarClickHandler" TValue="utilizador">
                 </GridEvents>
 
                 <GridColumns>
-                    <GridColumn Field=@nameof(Utilizador.UtilizadorId) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" Width="10"
+                    <GridColumn Field=@nameof(utilizador.utilizadorId) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" Width="10"
                                 AllowSearching="false">
                     </GridColumn>
-                    <GridColumn Field=@nameof(Utilizador.UtilizadorNome) HeaderText="Designação" Width="90">
+                    <GridColumn Field=@nameof(utilizador.utilizadorNome) HeaderText="Designação" Width="90">
                     </GridColumn>
-                    <GridColumn Field=@nameof(Utilizador.UtilizadorEmail) HeaderText="E-mail" Width="90">
+                    <GridColumn Field=@nameof(utilizador.utilizadorEmail) HeaderText="E-mail" Width="90">
                     </GridColumn>
-                    <GridColumn Field=@nameof(Utilizador.UtilizadorIniciais) HeaderText="Iniciais" Width="90">
+                    <GridColumn Field=@nameof(utilizador.utilizadorIniciais) HeaderText="Iniciais" Width="90">
                     </GridColumn>
                 </GridColumns>
 
@@ -69,7 +69,7 @@
 </style>
 
 @code {
-    private SfGrid<Utilizador> DefaultGrid;
+    private SfGrid<utilizador> DefaultGrid;
 
     public void OnInput(InputEventArgs args)
     {

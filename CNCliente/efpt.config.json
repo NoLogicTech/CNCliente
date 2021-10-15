@@ -1,0 +1,85 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "CngestaoprojetosContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "ProjectRootNamespace": "CNCliente",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 2,
+   "Tables": [
+      {
+         "Name": "[dbo].[cae]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[cliente]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[codpostal]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[concelho]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[dimensao]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[distrito]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[estadoprojeto]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[medida]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[projeto]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[regiao]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[setor]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[tarefa]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[utilizador]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "webserverubuntu-virtual-machine.CNGestaoProjetos.dbo",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false
+}

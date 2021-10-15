@@ -4,7 +4,7 @@
 @using Syncfusion.Blazor.Navigations
 @using Syncfusion.Blazor.Inputs
 @using Newtonsoft.Json
-@using Blazor.Models
+@using CNCliente.Models
 @inject HttpClient httpclient
 
 @page "/tcliente"
@@ -23,7 +23,7 @@
     <div class="flex bg-white m-3 rounded-sm shadow-lg">
         <div class="flex">
 
-            <SfGrid @ref="DefaultGrid" ID="Grid" TValue="Cliente" Toolbar=@ToolbarItems AllowSorting="true" AllowPaging="true"
+            <SfGrid @ref="DefaultGrid" ID="Grid" TValue="cliente" Toolbar=@ToolbarItems AllowSorting="true" AllowPaging="true"
                     AllowExcelExport="true" AllowPdfExport="true" ContextMenuItems=@ContextMenuItems>
                 <SfDataManager Url="api/Cliente" CrossDomain="true" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
 
@@ -41,22 +41,22 @@
                     </ToolbarItems>
                 </SfToolbar>
                 <GridPageSettings PageSizes="true"></GridPageSettings>
-                <GridEvents OnActionFailure="ActionFailureHandler" OnToolbarClick="ToolbarClickHandler" TValue="Cliente">
+                <GridEvents OnActionFailure="ActionFailureHandler" OnToolbarClick="ToolbarClickHandler" TValue="cliente">
                 </GridEvents>
 
                 <GridColumns>
-                    <GridColumn Field=@nameof(Cliente.ClienteId) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" Width="10"
+                    <GridColumn Field=@nameof(cliente.clienteId) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" Width="10"
                                 AllowSearching="false" Visible="false">
                     </GridColumn>
-                    <GridColumn Field=@nameof(Cliente.ClienteErpid) HeaderText="ERP ID" Width="10">
+                    <GridColumn Field=@nameof(cliente.clienteErpid) HeaderText="ERP ID" Width="10">
                     </GridColumn>
-                    <GridColumn Field=@nameof(Cliente.ClienteNipc) HeaderText="NIPC" Width="30">
+                    <GridColumn Field=@nameof(cliente.clienteNipc) HeaderText="NIPC" Width="30">
                     </GridColumn>
-                    <GridColumn Field=@nameof(Cliente.ClienteNome) HeaderText="Designação" Width="90">
+                    <GridColumn Field=@nameof(cliente.clienteNome) HeaderText="Designação" Width="90">
                     </GridColumn>
-                    <GridColumn Field=@nameof(Cliente.ClienteTelefone) HeaderText="Telefone" Width="30">
+                    <GridColumn Field=@nameof(cliente.clienteTelefone) HeaderText="Telefone" Width="30">
                     </GridColumn>
-                    <GridColumn Field=@nameof(Cliente.ClienteEmail) HeaderText="E-mail" Width="40">
+                    <GridColumn Field=@nameof(cliente.clienteEmail) HeaderText="E-mail" Width="40">
                     </GridColumn>
                 </GridColumns>
 
@@ -74,7 +74,7 @@
 </style>
 
 @code {
-    private SfGrid<Cliente> DefaultGrid;
+    private SfGrid<cliente> DefaultGrid;
 
     public void OnInput(InputEventArgs args)
     {

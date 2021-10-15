@@ -3,7 +3,7 @@
 @using Syncfusion.Blazor.Data
 @using Syncfusion.Blazor.Navigations
 @using Syncfusion.Blazor.Inputs
-@using Blazor.Models
+@using CNCliente.Models
 @inject HttpClient httpclient
 
 @page "/tprojeto"
@@ -22,7 +22,7 @@
     <div class="flex bg-white m-3 rounded-sm shadow-lg">
         <div class="flex">
 
-            <SfGrid @ref="DefaultGrid" ID="Grid" TValue="Projeto" Toolbar=@ToolbarItems AllowSorting="true" AllowPaging="true"
+            <SfGrid @ref="DefaultGrid" ID="Grid" TValue="projeto" Toolbar=@ToolbarItems AllowSorting="true" AllowPaging="true"
                     AllowExcelExport="true" AllowPdfExport="true" ContextMenuItems=@ContextMenuItems>
                 <SfDataManager Url="api/Projeto" CrossDomain="true" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
 
@@ -40,23 +40,23 @@
                     </ToolbarItems>
                 </SfToolbar>
                 <GridPageSettings PageSizes="true"></GridPageSettings>
-                <GridEvents OnActionFailure="ActionFailureHandler" OnToolbarClick="ToolbarClickHandler" TValue="Projeto">
+                <GridEvents OnActionFailure="ActionFailureHandler" OnToolbarClick="ToolbarClickHandler" TValue="projeto">
                 </GridEvents>
 
                 <GridColumns>
-                    <GridColumn Field=@nameof(Projeto.projetoId) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" Width="10"
+                    <GridColumn Field=@nameof(projeto.projetoId) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" Width="10"
                                 AllowSearching="false" Visible="false">
                     </GridColumn>
-                    <GridColumn Field=@nameof(Projeto.projetoNumero) HeaderText="N.º" Width="10">
+                    <GridColumn Field=@nameof(projeto.projetoNumero) HeaderText="N.º" Width="10">
                     </GridColumn>
-                    <GridColumn Field="Cliente.ClienteNome" HeaderText="Cliente" Width="35"></GridColumn>
-                    <GridColumn Field="Medida.MedidaNome" HeaderText="Medida" Width="20"></GridColumn>
-                    <GridColumn Field="Estadoprojeto.EstadoprojetoNome" HeaderText="Estado" Width="25"></GridColumn>
-                    <GridColumn Field=@nameof(Projeto.projetoDatasubmissao) HeaderText="Submissão" Format="d" Type=ColumnType.Date  Width="10"></GridColumn>
-                    <GridColumn Field=@nameof(Projeto.ProjetoDatainicio) HeaderText="Início" Format="d" Type=ColumnType.Date Width="10"></GridColumn>
-                    <GridColumn Field=@nameof(Projeto.ProjetoDatafim) HeaderText="Fim" Format="d" Type=ColumnType.Date Width="10"></GridColumn>
-                    <GridColumn Field=@nameof(Projeto.projetoValoraprovado) HeaderText="Investimento" Format="N2" Width="15"></GridColumn>
-                    <GridColumn Field=@nameof(Projeto.projetoIncentivoaprovado) HeaderText="Incentivo" Format="N2" Width="15"></GridColumn>
+                    <GridColumn Field="cliente.clienteNome" HeaderText="Cliente" Width="35"></GridColumn>
+                    <GridColumn Field="medida.medidaNome" HeaderText="Medida" Width="20"></GridColumn>
+                    <GridColumn Field="estado.estadoprojetoNome" HeaderText="Estado" Width="25"></GridColumn>
+                    <GridColumn Field=@nameof(projeto.projetoDatasubmissao) HeaderText="Submissão" Format="d" Type=ColumnType.Date  Width="10"></GridColumn>
+                    <GridColumn Field=@nameof(projeto.projetoDatainicio) HeaderText="Início" Format="d" Type=ColumnType.Date Width="10"></GridColumn>
+                    <GridColumn Field=@nameof(projeto.projetoDatafim) HeaderText="Fim" Format="d" Type=ColumnType.Date Width="10"></GridColumn>
+                    <GridColumn Field=@nameof(projeto.projetoValoraprovado) HeaderText="Investimento" Format="N2" Width="15"></GridColumn>
+                    <GridColumn Field=@nameof(projeto.projetoIncentivoaprovado) HeaderText="Incentivo" Format="N2" Width="15"></GridColumn>
                 </GridColumns>
 
             </SfGrid>
@@ -73,7 +73,7 @@
 </style>
 
 @code {
-    private SfGrid<Projeto> DefaultGrid;
+    private SfGrid<projeto> DefaultGrid;
 
     public void OnInput(InputEventArgs args)
     {

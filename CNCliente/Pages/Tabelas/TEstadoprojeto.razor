@@ -3,7 +3,7 @@
 @using Syncfusion.Blazor.Data
 @using Syncfusion.Blazor.Navigations
 @using Syncfusion.Blazor.Inputs
-@using Blazor.Models
+@using CNCliente.Models
 @inject HttpClient httpclient
 
 @page "/testadoprojeto"
@@ -22,7 +22,7 @@
     <div class="flex bg-white m-3 rounded-sm shadow-lg">
         <div class="flex">
 
-            <SfGrid @ref="DefaultGrid" ID="Grid" TValue="Estadoprojeto" Toolbar=@ToolbarItems AllowSorting="true" AllowPaging="true"
+            <SfGrid @ref="DefaultGrid" ID="Grid" TValue="estadoprojeto" Toolbar=@ToolbarItems AllowSorting="true" AllowPaging="true"
                     AllowExcelExport="true" AllowPdfExport="true" ContextMenuItems=@ContextMenuItems>
                 <SfDataManager Url="api/Estadoprojeto" CrossDomain="true" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
 
@@ -40,14 +40,14 @@
                     </ToolbarItems>
                 </SfToolbar>
                 <GridPageSettings PageSizes="true"></GridPageSettings>
-                <GridEvents OnActionFailure="ActionFailureHandler" OnToolbarClick="ToolbarClickHandler" TValue="Estadoprojeto">
+                <GridEvents OnActionFailure="ActionFailureHandler" OnToolbarClick="ToolbarClickHandler" TValue="estadoprojeto">
                 </GridEvents>
 
                 <GridColumns>
-                    <GridColumn Field=@nameof(Estadoprojeto.EstadoprojetoId) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" Width="10"
+                    <GridColumn Field=@nameof(estadoprojeto.estadoprojetoId) HeaderText="ID" IsPrimaryKey="true" IsIdentity="true" Width="10"
                                 AllowSearching="false">
                     </GridColumn>
-                    <GridColumn Field=@nameof(Estadoprojeto.EstadoprojetoNome) HeaderText="Estado" Width="25">
+                    <GridColumn Field=@nameof(estadoprojeto.estadoprojetoNome) HeaderText="Estado" Width="25">
                     </GridColumn>
                     
                 </GridColumns>
@@ -65,7 +65,7 @@
 </style>
 
 @code {
-    private SfGrid<Estadoprojeto> DefaultGrid;
+    private SfGrid<estadoprojeto> DefaultGrid;
 
     public void OnInput(InputEventArgs args)
     {
