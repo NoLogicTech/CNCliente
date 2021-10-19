@@ -19,28 +19,31 @@
     </div>
     <div class="flex bg-white m-3 rounded-sm shadow-lg">
         <div class="flex">
-            <SfTreeGrid TValue="tarefa" IdMapping="tarefaId" AllowPaging="true" AllowSorting="true"
-                        ParentIdMapping="tarefaParentid" HasChildMapping="tarefaTemfilho" 
-                        TreeColumnIndex="1" Toolbar="@ToolbarItems">
+            <SfTreeGrid @ref="treeGrid" TValue="tarefa" IdMapping="@nameof(tarefa.tarefaId)" AllowPaging="true" AllowSorting="true"
+                        ParentIdMapping="@nameof(tarefa.tarefaParentid)" HasChildMapping="@nameof(tarefa.tarefaTemfilho)" 
+                        TreeColumnIndex="1" Toolbar="@(new List<string>() { "Add", "Edit" })">
                 <SfDataManager Url="api/Tarefa" Adaptor="Adaptors.WebApiAdaptor" CrossDomain="true"></SfDataManager>
-                <TreeGridEditSettings AllowEditing="true"
-                                      AllowAdding="true"
-                                      AllowDeleting="true"
-                                      AllowEditOnDblClick="true"></TreeGridEditSettings>
-                <TreeGridColumns>
-                    <TreeGridColumn Field="@nameof(tarefa.tarefaId)" HeaderText="ID" Width="80" IsPrimaryKey="true" IsIdentity="true"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.tarefaNome)" HeaderText="Designação" Width="120"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.projeto_Id)" HeaderText="Projeto" Width="80"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.tarefaParentid)" Width="80"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.tarefaDatahoraregisto)" DefaultValue=@DateTime.Now Width="160" EditType="Syncfusion.Blazor.Grids.EditType.DateTimePickerEdit"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.tarefaDatalimite)" DefaultValue=@DateTime.Now HeaderText="Data Limite" TextAlign="TextAlign.Center" Format="d" Width="60" EditType="Syncfusion.Blazor.Grids.EditType.DateTimePickerEdit"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.tarefaPosicao)" HeaderText="" Width="80"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.utilizador_Id)" HeaderText="Responsável" Width="80"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.tarefaEstado)" DefaultValue="false" HeaderText="Estado" TextAlign="TextAlign.Right" Width="60"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.tarefaTemfilho)" HeaderText="" Width="80"></TreeGridColumn>
-                </TreeGridColumns>
 
-               
+               <TreeGridEditSettings
+                          AllowEditing="true"
+                          AllowAdding="true"
+                          AllowDeleting="true"
+                          Mode="Syncfusion.Blazor.TreeGrid.EditMode.Row"
+                          NewRowPosition="RowPosition.Child">
+               </TreeGridEditSettings>
+
+                <TreeGridColumns>
+                    <TreeGridColumn Field="@nameof(tarefa.tarefaId)" Visible="false" HeaderText="ID" Width="80" IsPrimaryKey="true" IsIdentity="true"></TreeGridColumn>
+                    <TreeGridColumn Field="@nameof(tarefa.tarefaNome)" HeaderText="Designação" Width="120"></TreeGridColumn>
+                    <TreeGridColumn Field="@nameof(tarefa.projeto_Id)" HeaderText="Projeto" DefaultValue="1" Width="80"></TreeGridColumn>
+                    <TreeGridColumn Field="@nameof(tarefa.tarefaParentid)" Visible="false" Width="80"></TreeGridColumn>
+                    <TreeGridColumn Field="@nameof(tarefa.tarefaDatahoraregisto)" Visible="false" DefaultValue=@DateTime.Now Width="160" EditType="Syncfusion.Blazor.Grids.EditType.DateTimePickerEdit"></TreeGridColumn>
+                    <TreeGridColumn Field="@nameof(tarefa.tarefaDatalimite)" DefaultValue=@DateTime.Now HeaderText="Data Limite" TextAlign="TextAlign.Center" Format="d" Width="60" EditType="Syncfusion.Blazor.Grids.EditType.DateTimePickerEdit"></TreeGridColumn>
+                    <TreeGridColumn Field="@nameof(tarefa.tarefaPosicao)" Visible="false" HeaderText="" Width="80"></TreeGridColumn>
+                    <TreeGridColumn Field="@nameof(tarefa.utilizador_Id)" Visible="false" HeaderText="Responsável" DefaultValue="1" Width="80"></TreeGridColumn>
+                    <TreeGridColumn Field="@nameof(tarefa.tarefaEstado)" DefaultValue="false" HeaderText="Estado" DisplayAsCheckBox="true" Width="60"></TreeGridColumn>
+                    <TreeGridColumn Field="@nameof(tarefa.tarefaTemfilho)" Visible="false" HeaderText="" Width="80"></TreeGridColumn>
+                </TreeGridColumns>
 
             </SfTreeGrid>
         </div>
@@ -64,7 +67,7 @@
 @code {
     // VALORES DE INICIALIZAÇÃO SIMULADOS
 
-    public SfTreeGrid<tarefa> treeGrid { get; set; }
+    SfTreeGrid<tarefa> treeGrid { get; set; }
 
     private List<object> ToolbarItems = new List<object>()
     {
@@ -96,6 +99,5 @@
     {
         
     }
-
 
 }
