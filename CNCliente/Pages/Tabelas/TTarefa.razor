@@ -1,16 +1,8 @@
-﻿@using Syncfusion.Blazor
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Data
-@using Syncfusion.Blazor.TreeGrid
-@using Syncfusion.Blazor.Navigations
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.DropDowns
-@using CNCliente.Models
+﻿@using CNCliente.Models
 @inject HttpClient httpclient
 
 @page "/ttarefa"
 
-@error123
 <div class="flex bg-gray-100 flex-grow flex-col">
     <div class="flex p-4 font-bold text-2xl text-gray-800 border-b-2 mx-3 border-blue-600 border-opacity-90 h-14 ">
         <p>TABELAS</p>
@@ -19,36 +11,26 @@
     </div>
     <div class="flex bg-white m-3 rounded-sm shadow-lg">
         <div class="flex">
-            <SfTreeGrid @ref="treeGrid" TValue="tarefa" IdMapping="@nameof(tarefa.tarefaId)" AllowPaging="true" AllowSorting="true"
-                        ParentIdMapping="@nameof(tarefa.tarefaParentid)" HasChildMapping="@nameof(tarefa.tarefaTemfilho)" 
-                        TreeColumnIndex="1" Toolbar="@(new List<string>() { "Add", "Edit" })">
-                <SfDataManager Url="api/Tarefa" Adaptor="Adaptors.WebApiAdaptor" CrossDomain="true"></SfDataManager>
 
-               <TreeGridEditSettings
-                          AllowEditing="true"
-                          AllowAdding="true"
-                          AllowDeleting="true"
-                          Mode="Syncfusion.Blazor.TreeGrid.EditMode.Row"
-                          NewRowPosition="RowPosition.Child">
-               </TreeGridEditSettings>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
 
-                <TreeGridColumns>
-                    <TreeGridColumn Field="@nameof(tarefa.tarefaId)" Visible="false" HeaderText="ID" Width="80" IsPrimaryKey="true" IsIdentity="true"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.tarefaNome)" HeaderText="Designação" Width="120"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.projeto_Id)" HeaderText="Projeto" DefaultValue="1" Width="80"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.tarefaParentid)" Visible="false" Width="80"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.tarefaDatahoraregisto)" Visible="false" DefaultValue=@DateTime.Now Width="160" EditType="Syncfusion.Blazor.Grids.EditType.DateTimePickerEdit"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.tarefaDatalimite)" DefaultValue=@DateTime.Now HeaderText="Data Limite" TextAlign="TextAlign.Center" Format="d" Width="60" EditType="Syncfusion.Blazor.Grids.EditType.DateTimePickerEdit"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.tarefaPosicao)" Visible="false" HeaderText="" Width="80"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.utilizador_Id)" Visible="false" HeaderText="Responsável" DefaultValue="1" Width="80"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.tarefaEstado)" DefaultValue="false" HeaderText="Estado" DisplayAsCheckBox="true" Width="60"></TreeGridColumn>
-                    <TreeGridColumn Field="@nameof(tarefa.tarefaTemfilho)" Visible="false" HeaderText="" Width="80"></TreeGridColumn>
-                </TreeGridColumns>
-
-            </SfTreeGrid>
         </div>
     </div>
 </div>
+
+<div>Clicar: </div>
+<div>Action: </div>
+<div>Action Completed: </div>
+<div>Data Bound: </div>
 
 <style>
     .e-grid .e-headercell {
@@ -65,39 +47,7 @@
 
 
 @code {
-    // VALORES DE INICIALIZAÇÃO SIMULADOS
 
-    SfTreeGrid<tarefa> treeGrid { get; set; }
 
-    private List<object> ToolbarItems = new List<object>()
-    {
-    new ItemModel() {Text = "Novo", PrefixIcon = "e-add", Id = "Grid_add"},
-    new ItemModel() {Text = "Editar", PrefixIcon = "e-edit", Id = "Grid_edit"},
-    new ItemModel() {Text = "Apagar", PrefixIcon = "e-delete", Id = "Grid_delete"},
-    new ItemModel() {Text = "Guardar", PrefixIcon = "e-update", Id = "Grid_update"},
-    new ItemModel() {Text = "Cancelar", PrefixIcon = "e-cancel", Id = "Grid_cancel"},
-    new ItemModel() {Text = "Excel", PrefixIcon = "e-excelexport", Id = "Grid_excelexport"},
-    new ItemModel() {Text = "PDF", PrefixIcon = "e-pdfexport", Id = "Grid_pdfexport"}
-    };
-
-    private List<object> ContextMenuItems = new List<object>()
-    {
-    "Edit",
-    "Delete",
-    "Copy"
-    };
-
-    public string error123;
-
-    public void ActionFailureHandler(Syncfusion.Blazor.Grids.FailureEventArgs args)
-    {
-        Exception myReturnedException = args.Error;
-        error123 = myReturnedException.ToString();
-    }
-
-    protected override void OnInitialized()
-    {
-        
-    }
 
 }
