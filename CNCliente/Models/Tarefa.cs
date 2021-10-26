@@ -7,7 +7,7 @@ namespace CNCliente.Models
     public partial class tarefa
     {
         public int tarefaId { get; set; }
-        public int tarefaParentid { get; set; }
+        public int? tarefaParentid { get; set; }
         public int projeto_Id { get; set; }
         public string tarefaNome { get; set; }
         public DateTime tarefaDatahoraregisto { get; set; }

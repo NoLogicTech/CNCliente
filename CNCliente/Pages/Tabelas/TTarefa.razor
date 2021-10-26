@@ -1,7 +1,14 @@
 ﻿@using CNCliente.Models
+@using CNCliente.Services
+@using System.IO
+@using System.Text.Json
 @inject HttpClient httpclient
 
 @page "/ttarefa"
+
+@{
+
+}
 
 <div class="flex bg-gray-100 flex-grow flex-col">
     <div class="flex p-4 font-bold text-2xl text-gray-800 border-b-2 mx-3 border-blue-600 border-opacity-90 h-14 ">
@@ -15,11 +22,24 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>TarefaId</th>
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    @foreach (var item in TList)
+                    {
+                        <tr>
+                            <td>@item.tarefaId</td>
+                            <td>@item.tarefaParentid</td>
+                            <td>@item.projeto_Id</td>
+                            <td>@item.tarefaNome</td>
+                            <td>@item.tarefaDatahoraregisto</td>
+                            <td>@item.tarefaDatalimite</td>
+                            <td>@item.utilizador_Id</td>
+                            <td>@item.tarefaEstado</td>
+                            <td>@item.tarefaTemfilho</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
 
@@ -45,9 +65,17 @@
 </style>
 
 
-
 @code {
 
+    public List<tarefa> TList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        HttpResponseMessage response = await httpclient.GetAsync("api/tarefa");
+        response.EnsureSuccessStatusCode();
+        var responseBody = await response.Content.ReadAsStreamAsync();
+
+    }
 
 
 }
