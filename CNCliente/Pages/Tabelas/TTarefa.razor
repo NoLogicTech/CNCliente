@@ -1,8 +1,9 @@
 ﻿@using CNCliente.Models
-@using CNCliente.Services
 @using System.IO
 @using System.Text.Json
-@inject HttpClient httpclient
+@using System.Net.Http
+@inject HttpClient Http
+@using System.Net.Http.Json
 
 @page "/ttarefa"
 
@@ -19,29 +20,21 @@
     <div class="flex bg-white m-3 rounded-sm shadow-lg">
         <div class="flex">
 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>TarefaId</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in TList)
+            @if (tarefas == null)
+            {
+                <p>No Todo Items found.</p>
+            }
+            else
+            {
+                <ul>
+                    @foreach (var item in tarefas)
                     {
-                        <tr>
-                            <td>@item.tarefaId</td>
-                            <td>@item.tarefaParentid</td>
-                            <td>@item.projeto_Id</td>
-                            <td>@item.tarefaNome</td>
-                            <td>@item.tarefaDatahoraregisto</td>
-                            <td>@item.tarefaDatalimite</td>
-                            <td>@item.utilizador_Id</td>
-                            <td>@item.tarefaEstado</td>
-                            <td>@item.tarefaTemfilho</td>
-                        </tr>
+                        <li>@item.tarefaNome</li>
                     }
-                </tbody>
-            </table>
+                </ul>
+            }
+
+
 
         </div>
     </div>
@@ -52,30 +45,11 @@
 <div>Action Completed: </div>
 <div>Data Bound: </div>
 
-<style>
-    .e-grid .e-headercell {
-        background-color: rgba(37, 99, 235, 0.9);
-        font-weight: bolder;
-        color: white;
-    }
-
-    .e-search:before {
-        content: '\e75d';
-    }
-</style>
-
-
 @code {
 
-    public List<tarefa> TList;
+    IList<tarefa> tarefas { get; set; } 
 
-    protected override async Task OnInitializedAsync()
-    {
-        HttpResponseMessage response = await httpclient.GetAsync("api/tarefa");
-        response.EnsureSuccessStatusCode();
-        var responseBody = await response.Content.ReadAsStreamAsync();
-
-    }
-
+    protected override async Task OnInitializedAsync() =>
+    tarefas = await Http.GetFromJsonAsync<List<tarefa>>("api/Tarefa");
 
 }
