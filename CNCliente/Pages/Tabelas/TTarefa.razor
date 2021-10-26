@@ -17,21 +17,72 @@
         <p class="px-3"> | </p>
         <p>TAREFAS</p>
     </div>
-    <div class="flex bg-white m-3 rounded-sm shadow-lg">
-        <div class="flex">
+    <div class="flex flex-grow bg-white m-3 rounded-sm shadow-lg">
+        <div class="flex-grow">
 
             @if (tarefas == null)
             {
-                <p>No Todo Items found.</p>
+                <p>Sem items na lista de tarefas</p>
             }
             else
             {
-                <ul>
-                    @foreach (var item in tarefas)
-                    {
-                        <li>@item.tarefaNome</li>
-                    }
-                </ul>
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Id
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Designação
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Responsável
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Data Limite
+                            </th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Estado
+                            </th>
+                            <th scope="col" class="relative px-6 py-3">
+                                C
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @foreach (var item in tarefas)
+                        {
+                            <tr>
+                                <td class="px-6 py-3 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        @item.tarefaId
+                                    </div>
+                                </td>
+                                <td class="px-6 py-3 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900">
+                                        @item.tarefaNome
+                                    </div>
+                                </td>
+                                <td class="px-6 py-3 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        @item.utilizador_Id
+                                    </span>
+                                </td>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                                    @item.tarefaDatalimite
+                                </td>
+                                <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
+                                    @item.tarefaEstado
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Add</a>
+                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                </td>
+                            </tr>
+                        }
+                        <!-- More people... -->
+                </tbody>
+                </table>
             }
 
 
@@ -47,7 +98,7 @@
 
 @code {
 
-    IList<tarefa> tarefas { get; set; } 
+    IList<tarefa> tarefas { get; set; }
 
     protected override async Task OnInitializedAsync() =>
     tarefas = await Http.GetFromJsonAsync<List<tarefa>>("api/Tarefa");
