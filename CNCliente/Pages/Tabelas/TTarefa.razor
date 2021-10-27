@@ -52,18 +52,20 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach (var item in tarefas)
                         {
-                            <tr>
+
+
+                            <tr class="hover:bg-gray-200">
                                 <td class="px-6 py-3 whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <!--@item.tarefaId-->
-                                        @if (item.tarefaTemfilho == true)
+                                        @if(item.tarefaTemfilho == true)
                                         {
-                                            <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-1 border border-blue-500 hover:border-transparent rounded">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                                                </svg>
-                                            </button>
+                                        <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-1 border border-blue-500 hover:border-transparent rounded">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </button>
                                         }
+                                        <div class="px-3">@item.tarefaId</div>
                                     </div>
                                 </td>
                                 <td class="px-6 py-3 whitespace-nowrap">
@@ -87,8 +89,10 @@
                                     <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                 </td>
                             </tr>
+
+
+
                         }
-                        <!-- More people... -->
                 </tbody>
                 </table>
             }
