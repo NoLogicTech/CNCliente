@@ -6,6 +6,11 @@ namespace CNCliente.Models
 {
     public partial class projeto
     {
+        public projeto()
+        {
+            tarefa = new HashSet<tarefa>();
+        }
+
         public int projetoId { get; set; }
         public string projetoNumero { get; set; }
         public string projetoDesignacao { get; set; }
@@ -26,5 +31,6 @@ namespace CNCliente.Models
         public virtual cliente cliente { get; set; }
         public virtual estadoprojeto estado { get; set; }
         public virtual medida medida { get; set; }
+        public virtual ICollection<tarefa> tarefa { get; set; }
     }
 }

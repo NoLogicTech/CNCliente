@@ -75,7 +75,7 @@
                                 </td>
                                 <td class="px-6 py-3 whitespace-nowrap">
                                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                        @item.utilizador_Id
+                                        @item.utilizador.utilizadorIniciais
                                     </span>
                                 </td>
                                 <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-500">
@@ -109,10 +109,14 @@
 <div>Data Bound: </div>
 
 @code {
-
+ 
     IList<tarefa> tarefas { get; set; }
+    IList<tarefa> responsaveis { get; set; }
 
-    protected override async Task OnInitializedAsync() =>
-    tarefas = await Http.GetFromJsonAsync<List<tarefa>>("api/Tarefa");
+    protected override async Task OnInitializedAsync()
+    {
+        tarefas = await Http.GetFromJsonAsync<List<tarefa>>("api/Tarefa");
+        responsaveis = await Http.GetFromJsonAsync<List<tarefa>>("api/Responsavel");
+    }
 
 }

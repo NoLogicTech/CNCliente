@@ -6,9 +6,16 @@ namespace CNCliente.Models
 {
     public partial class utilizador
     {
+        public utilizador()
+        {
+            tarefa = new HashSet<tarefa>();
+        }
+
         public int utilizadorId { get; set; }
         public string utilizadorEmail { get; set; }
         public string utilizadorIniciais { get; set; }
         public string utilizadorNome { get; set; }
+
+        public virtual ICollection<tarefa> tarefa { get; set; }
     }
 }
